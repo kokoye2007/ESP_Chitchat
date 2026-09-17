@@ -1,33 +1,37 @@
-# Software and Simulator Guide
+# Software, Simulation, and Development Tools
 
-## Recommended progression
+## Toolchain decision
 
-| Stage | Tool | Best use |
+| Layer | Tool | Repository role |
 |---|---|---|
-| 1 | [Scratch](https://scratch.mit.edu/) | Explain logic with blocks, stories, and broadcasts. |
-| 2 | [Wokwi](https://wokwi.com/) | Simulate ESP32 circuits, sensors, displays, LEDs, buzzers, and servos in a browser. |
-| 3 | [Arduino IDE](https://www.arduino.cc/en/software) | Upload Arduino C/C++ to real ESP8266/ESP32 boards. |
-| 4 | [MicroPython](https://micropython.org/) | Introduce Python-style firmware after the hardware basics. |
-| 5 | [PlatformIO](https://platformio.org/) | Move toward repeatable, professional project builds. |
+| Logic | [Scratch](https://scratch.mit.edu/) | Model behaviour with blocks before wiring. |
+| Virtual hardware | [Wokwi](https://wokwi.com/) | Run ESP32 Arduino/MicroPython experiments without hardware. |
+| Beginner firmware | [Arduino IDE](https://www.arduino.cc/en/software) | Upload C/C++ sketches to ESP8266/ESP32. |
+| Python-style firmware | [MicroPython](https://micropython.org/) | Follow-up path after GPIO concepts. |
+| Professional ESP32 | [ESP-IDF](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/) | Advanced framework and production path. |
 
-## Wokwi
+## Wokwi boundary
 
-Wokwi is the primary no-hardware simulator for this project. It supports ESP32 boards and can simulate Wi-Fi projects that query HTTP/HTTPS services, MQTT, and other network protocols. The public gateway is convenient for learning; the private gateway is intended for faster/local development and has plan requirements. Read the [Wokwi documentation](https://docs.wokwi.com/) and [ESP32 Wi-Fi guide](https://docs.wokwi.com/guides/esp32-wifi).
+Wokwi’s current documentation focuses on ESP32-family boards and supports Arduino, MicroPython, and ESP-IDF workflows. Its Wi-Fi simulation can make HTTP/HTTPS and MQTT connections through the Wokwi gateway. The public gateway is convenient for experiments but should not receive secrets or sensitive data; use the private gateway when local-network access and privacy are required.
 
-Use an ESP32 board in Wokwi for simulation, even when the first physical lesson uses an ESP8266. Label the difference clearly: **physical starter board: ESP8266; simulator/upgrade path: ESP32**.
+For this repository:
 
-## Scratch
+- Simulate the Event Box with an ESP32-compatible Wokwi project.
+- Keep physical ESP8266 pin assignments separate from ESP32 diagrams.
+- Do not claim a live API integration until it has been tested from the simulator.
 
-Use Scratch to model the decision before introducing pins:
+Start with the [Wokwi ESP32 guide](https://docs.wokwi.com/guides/esp32), then the [Wi-Fi guide](https://docs.wokwi.com/guides/esp32-wifi).
 
-```text
-when I receive [rain]
-say [Rain expected!]
-switch costume to [umbrella]
-```
+## Scratch boundary
 
-Direct Scratch-to-ESP control requires a supported extension or a custom bridge. Do not make that bridge a Demo Day dependency; use Scratch for logic and Wokwi/web simulation for hardware.
+Scratch is the logic layer for the first lesson. Hardware extensions exist, but direct ESP8266 control requires a supported extension or a custom bridge. A bridge is out of scope for Demo Day because it adds browser and networking failure modes.
 
 ## Local browser simulator
 
-The repository’s `demo-day/web-simulator/index.html` is a dependency-free visual fallback. It runs with Python’s static server and simulates event outputs. It is intentionally deterministic for presentations; live APIs can be added later.
+`demo-day/web-simulator/index.html` is a deterministic presentation harness, not an ESP emulator. It visualises the event vocabulary used by the Arduino sketch:
+
+```text
+rain | goal | plant | clear
+```
+
+It deliberately has no dependency or API key. A future server component may add shared phone control and live weather data without changing the event vocabulary.

@@ -1,27 +1,27 @@
-# Project Inspiration and Useful Links
+# Project References
 
-These links are references for teaching and future project selection. They are not dependencies of the Demo Day simulator.
+These are research and inspiration links. They are not copied implementations and are not dependencies of the local demo.
 
-## Beginner and simulator projects
+## Authoritative starting points
 
-- [Wokwi online simulator](https://wokwi.com/) — browser-based ESP32 and electronics simulation.
-- [Wokwi ESP32 simulation guide](https://docs.wokwi.com/guides/esp32) — Arduino, MicroPython, and ESP-IDF examples.
-- [Arduino examples](https://docs.arduino.cc/built-in-examples/) — small, teachable input/output patterns.
-- [Scratch ideas](https://scratch.mit.edu/ideas) — beginner logic and animation activities.
+- [Arduino built-in examples](https://docs.arduino.cc/built-in-examples/) — minimal GPIO and communication patterns.
+- [Wokwi ESP32 simulation](https://docs.wokwi.com/guides/esp32) — supported boards and firmware workflows.
+- [Open-Meteo API](https://open-meteo.com/en/docs) — no-key weather API for controlled prototypes; attribution and usage limits still apply.
+- [Espressif ESP-IDF hardware reference](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/) — official ESP32 hardware documentation.
 
-## Real-world inspiration
+## Real-world project references
 
-- [ESP32 Weather Station on a PCB](https://hackaday.com/2018/02/10/esp32-weather-station-on-a-pcb/) — shows sensors, a web interface, and a path from breadboard to a product-like board.
-- [Building an Army of ESP32 Air Quality Sensors](https://hackaday.com/2019/04/05/building-an-army-of-esp32-air-quality-sensors/) — connects ESP32 sensor nodes to data collection and visualisation.
-- [Portable Home Air Quality Meter with the ESP32](https://hackaday.com/2020/07/20/a-portable-home-air-quality-meter-with-the-esp32/) — an example of sensors, MQTT, Raspberry Pi, InfluxDB, and Grafana working together.
-- [ESP32-based person sensor](https://hackaday.com/2026/01/28/make-your-own-esp32-based-person-sensor-no-special-hardware-needed/) — an advanced example showing how an ESP32 can become a sensing product.
+- [ESP32 Weather Station on a PCB](https://hackaday.com/2018/02/10/esp32-weather-station-on-a-pcb/) — sensor board, web interface, and product-like PCB progression.
+- [ESP32 Air Quality Sensor Network](https://hackaday.com/2019/04/05/building-an-army-of-esp32-air-quality-sensors/) — distributed nodes, data collection, and visualisation.
+- [Portable ESP32 Air Quality Meter](https://hackaday.com/2020/07/20/a-portable-home-air-quality-meter-with-the-esp32/) — sensors, MQTT, Raspberry Pi, InfluxDB, and Grafana.
+- [ESP32 Wi-Fi person sensor](https://hackaday.com/2026/01/28/make-your-own-esp32-based-person-sensor-no-special-hardware-needed/) — an advanced ESP32 sensing product.
 
-## How to use external project links
+## Research use
 
-Use one link as an inspiration slide after the live demo. Explain the progression:
+Use references to demonstrate the progression, not to overwhelm beginners:
 
 ```text
-simple touch input → connected sensor → dashboard → real product
+GPIO experiment → sensor node → network service → dashboard → product
 ```
 
-Do not copy article images into the repository without checking their license. Prefer the article link, a screenshot with permission, or a Wikimedia Commons image with attribution.
+Hackaday is editorial inspiration. For hardware limits and implementation decisions, prefer official Arduino, Espressif, and Wokwi documentation.

@@ -1,44 +1,52 @@
 # ESP_Chitchat
 
-Beginner-friendly open-hardware demonstrations showing how code can sense, decide, connect to the Internet, and create a physical response.
+ESP_Chitchat is an open-hardware education repository for demonstrating how software interacts with the physical world. It combines beginner activities, browser simulation, Arduino firmware examples, and a research-backed path toward Wi-Fi, APIs, MQTT, and AI.
 
-## What this repository contains
+This is a curriculum and demonstration project—not production device firmware. The first event uses an ESP8266/NodeMCU where available; ESP32 is the recommended upgrade and simulation target.
 
-- **Scratch → Wokwi → Arduino** learning path.
-- Touch-sensor activity for Chitchat / Demo Day.
-- Weather and football Event Box demonstrations.
-- Browser-based Event Box simulator in [`demo-day/web-simulator`](demo-day/web-simulator/).
-- Marp presentation sources and generated HTML decks.
-- Practical reference sheets for software, simulators, devices, and project inspiration.
+## Demonstration scope
 
-## Quick start
+1. **Touch LED** — input → decision → output.
+2. **Weather Event Box** — weather event → light, buzzer, and flag.
+3. **Football Event Box** — match event → light, buzzer, and flag.
 
-Run the browser simulator locally:
+The first project is interactive. The Event Box projects use deterministic simulated events so the presentation does not depend on an external API being available at the right moment.
+
+## Run locally
+
+Requirements: Python 3 for the browser demo; Arduino IDE for hardware sketches; Marp CLI only if editing presentations.
 
 ```bash
-cd demo-day
-python3 -m http.server 8000
+python3 -m http.server 8000 --directory demo-day
 ```
 
-Open <http://localhost:8000/web-simulator/>. The buttons simulate `rain`, `goal`, and `plant` events. This is a reliable presentation fallback; it does not yet synchronize multiple phones with one laptop.
+Open <http://localhost:8000/web-simulator/>. Use the laptop controls for the reliable demonstration. The current static page does not synchronize multiple phones with one laptop.
 
-## Learning path
+Render the focused presentation with Marp:
+
+```bash
+marp --html esp32-open-hardware-demo-day-marp.md \
+  -o esp32-open-hardware-demo-day-marp.html
+```
+
+## Repository map
 
 ```text
-Scratch logic → Wokwi simulation → Arduino C/C++ → ESP8266/ESP32 → APIs → AI
+demo-day/                         runnable teaching assets
+  arduino/                        Arduino C++ sketches
+  scratch/                        Scratch activity specification
+  web-simulator/                  dependency-free browser simulator
+docs/                             architecture, research, and runbook
+DEVICES.md                        inventory and purchasing sheet
+SIMULATORS.md                    toolchain and simulator decisions
+PROJECTS.md                      external project references
 ```
 
-Start with one visible physical idea. Add networking and AI only after the input/decision/output pattern is understood.
+## Design principles
 
-## Main documents
+- Start with a visible result and zero assumed knowledge.
+- Keep the first circuit local; add Internet data only after GPIO is understood.
+- Separate simulated events from live API integrations.
+- Treat board pin limits, voltage, power, and licensing as engineering constraints.
 
-- [`SIMULATORS.md`](SIMULATORS.md) — software and websites.
-- [`DEVICES.md`](DEVICES.md) — board, sensor, and output reference sheet.
-- [`PROJECTS.md`](PROJECTS.md) — project inspiration and useful links.
-- [`demo-day/README.md`](demo-day/README.md) — Demo Day setup.
-- [`esp32-open-hardware-demo-day-marp.md`](esp32-open-hardware-demo-day-marp.md) — focused 15-slide deck.
-- [`esp32-open-hardware-chitchat-marp-v2.md`](esp32-open-hardware-chitchat-marp-v2.md) — longer bootcamp overview deck.
-
-## Audience
-
-Assume zero prior experience. Prefer diagrams, short code, interaction, and a physical or virtual result over specification-heavy explanations.
+Read [`docs/RESEARCH.md`](docs/RESEARCH.md) for technical decisions, then [`docs/DEMO_DAY_RUNBOOK.md`](docs/DEMO_DAY_RUNBOOK.md) for the event procedure.

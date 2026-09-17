@@ -1,35 +1,50 @@
-# Devices and Module Sheet
+# Devices and Module Inventory
 
-## Controller boards
+This sheet separates the controller, input modules, and output hardware. The existing “22-in-1” kit is a mixed sensor/module pack; it is not a complete Event Box.
 
-| Device | Role now | Notes |
+## Controller decision
+
+| Board | Use | Engineering note |
 |---|---|---|
-| ESP8266 / NodeMCU | Beginner Wi-Fi controller | Good for GPIO, sensors, HTTP, and simple API demos; limited GPIO and usually one ADC. |
-| ESP32 DevKit | Advanced controller and simulator target | More GPIO, Bluetooth, memory, peripherals, and a stronger upgrade path. |
-| M5Stack CoreS3 | Polished demonstration device | Use later for touchscreen, camera, audio, and product-like demos. |
+| ESP8266 / NodeMCU | Early physical lessons | Wi-Fi and simple GPIO/HTTP are suitable; it has one user ADC channel and constrained GPIO. |
+| ESP32 DevKit | Upgrade path and Wokwi target | More GPIO/peripherals and better headroom for displays, actuators, and networking. |
+| M5Stack CoreS3 | Polished showcase later | Use for touchscreen, camera, audio, and product-like demonstrations—not first wiring lessons. |
 
-## Current 22-in-1 module kit
+## Exact 22-in-1 kit inventory
 
-| Category | Modules |
-|---|---|
-| Environment | DHT11, BMP280, photosensitive, soil moisture, water level, raindrop |
-| Movement | PIR/SR501, vibration/SW-420, tilt, speed |
-| Proximity/optical | HC-SR04 ultrasonic, obstacle avoidance, TCRT5000 tracking, laser KY-008, infrared KY-022 |
-| Magnetic | KY-003 Hall, KY-024 linear Hall |
-| Interaction | TTP223B touch, KY-037 microphone |
-| Other | Voltage sensor |
+| # | Module | Category | First teaching use |
+|---:|---|---|---|
+| 1 | DHT11 | Environment | Temperature/humidity |
+| 2 | SR501 PIR | Movement | Detect motion |
+| 3 | BMP280 | Environment | Pressure/temperature over I²C |
+| 4 | LM393 photosensitive | Light | Digital light threshold |
+| 5 | Soil moisture | Environment | Dry/wet threshold |
+| 6 | KY-008 laser | Optical/output | Light beam demonstration |
+| 7 | TTP223B touch | Human input | Touch LED activity |
+| 8 | Water level | Environment | Liquid level threshold |
+| 9 | Voltage sensor | Electrical measurement | Analog scaling with safety checks |
+| 10 | Speed sensor | Movement | Pulse counting |
+| 11 | KY-024 linear Hall | Magnetic | Magnetic field level |
+| 12 | Dupont cables | Wiring accessory | Prototyping |
+| 13 | HC-SR04 ultrasonic | Proximity | Distance measurement |
+| 14 | SW-420 vibration | Movement | Vibration threshold |
+| 15 | TCRT5000 tracking | Optical/proximity | Line tracking |
+| 16 | KY-037 microphone | Sound/input | Sound threshold |
+| 17 | KY-018 photosensitive | Light | Analog light experiment |
+| 18 | Obstacle avoidance | Proximity/IR | Near-object detection |
+| 19 | Raindrop | Environment | Wet/dry threshold |
+| 20 | Tilt switch | Movement | Orientation change |
+| 21 | KY-022 IR receiver | Remote input | Decode remote signals |
+| 22 | KY-003 Hall switch | Magnetic | Digital magnet detection |
 
-The kit is a **sensor/module kit**, not a complete output kit. It does not provide the standalone LED, resistor, buzzer, or servo needed for the Event Box. Some modules have indicator LEDs, but those are not a substitute for teaching output components.
+## Required output additions
 
-## Prioritised additions
+The kit does not include the standalone output set needed for the demonstrations:
 
-1. Breadboards, jumper wires, USB data cables, and resistor assortment.
-2. 5 mm LEDs and 220–330 Ω resistors for the first activity.
-3. RGB/NeoPixel LEDs, buzzers, and SG90 servos for visible outputs.
-4. OLED display, relay/MOSFET modules, fan, and small pump for later projects.
+- 5 mm LEDs and 220–330 Ω resistors
+- RGB LED or NeoPixel
+- Active/passive buzzer
+- SG90 servo and suitable 5 V power arrangement
+- Breadboards, jumper wires, USB data cables, and spare ESP boards
 
-## Reusable wiring pattern
-
-```text
-READ sensor/input → INTERPRET value → DECIDE rule/API/AI → ACT output
-```
+Never drive a motor, servo, relay, or pump directly from an ESP GPIO. Use an appropriate driver, shared ground, and external power where required.

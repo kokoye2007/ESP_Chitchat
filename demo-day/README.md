@@ -17,7 +17,7 @@ cd demo-day
 python3 -m http.server 8000
 ```
 
-Open `http://localhost:8000/web-simulator/` on the presentation laptop. Phones on the same network can open the laptop's local IP address and use the buttons as remote controls. Project the laptop screen for the audience.
+Open `http://localhost:8000/web-simulator/` on the presentation laptop and project that screen for the audience. Phones may open the page for individual exploration, but the current static page does not synchronize phone buttons with the laptop.
 
 The buttons represent API events. They are deliberately simulated so the demo remains reliable; a live weather or football API can be added later. The current page is a local visual simulator: opening it on a phone does not control the laptop page. Use the laptop buttons for the main presentation, or add a small server/WebSocket bridge when shared phone control is required.
 
