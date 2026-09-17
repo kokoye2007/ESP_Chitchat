@@ -1,5 +1,7 @@
 # ESP_Chitchat
 
+![ESP_Chitchat generated hero: ESP board, sensors, data, and physical outputs](assets/esp-chitchat-hero.png)
+
 ESP_Chitchat is an open-hardware education repository for demonstrating how software interacts with the physical world. It combines beginner activities, browser simulation, Arduino firmware examples, and a research-backed path toward Wi-Fi, APIs, MQTT, and AI.
 
 This is a curriculum and demonstration project—not production device firmware. The first event uses an ESP8266/NodeMCU where available; ESP32 is the recommended upgrade and simulation target.
@@ -37,6 +39,7 @@ demo-day/                         runnable teaching assets
   scratch/                        Scratch activity specification
   web-simulator/                  dependency-free browser simulator
 docs/                             architecture, research, and runbook
+assets/                           repository visuals, including the generated README hero
 DEVICES.md                        inventory and purchasing sheet
 SIMULATORS.md                    toolchain and simulator decisions
 PROJECTS.md                      external project references
