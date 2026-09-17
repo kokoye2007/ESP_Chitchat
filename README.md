@@ -50,3 +50,5 @@ PROJECTS.md                      external project references
 - Treat board pin limits, voltage, power, and licensing as engineering constraints.
 
 Read [`docs/RESEARCH.md`](docs/RESEARCH.md) for technical decisions, then [`docs/DEMO_DAY_RUNBOOK.md`](docs/DEMO_DAY_RUNBOOK.md) for the event procedure.
+
+For broader discovery, see [`RESOURCES.md`](RESOURCES.md) and [`GITHUB_SEARCH.md`](GITHUB_SEARCH.md). These explain which sources are authoritative, how to evaluate community projects, and how to search GitHub effectively.

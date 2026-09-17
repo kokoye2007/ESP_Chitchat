@@ -2,6 +2,8 @@
 
 These are research and inspiration links. They are not copied implementations and are not dependencies of the local demo.
 
+For a broader catalogue of official repositories, awesome lists, IDEs, simulators, and project sites, see [`RESOURCES.md`](RESOURCES.md). For repeatable repository and code discovery, see [`GITHUB_SEARCH.md`](GITHUB_SEARCH.md).
+
 ## Authoritative starting points
 
 - [Arduino built-in examples](https://docs.arduino.cc/built-in-examples/) — minimal GPIO and communication patterns.
