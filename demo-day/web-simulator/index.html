@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VibeCode Event Box</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; }
+    body { margin: 0; background: #101827; color: #eef4ff; }
+    main { max-width: 900px; margin: auto; padding: 24px; }
+    h1 { margin-bottom: 4px; } p { color: #b8c5d9; }
+    .box { background: #18253a; border: 1px solid #304564; border-radius: 18px; padding: 24px; margin-top: 20px; }
+    .outputs { display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; margin: 24px 0; }
+    .output { min-width: 130px; padding: 20px 12px; text-align: center; border-radius: 14px; background: #243650; transition: .2s; }
+    .output.active { background: #e7a82b; color: #151515; transform: scale(1.05); }
+    .icon { display: block; font-size: 42px; margin-bottom: 8px; }
+    .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 12px; }
+    button { border: 0; border-radius: 10px; padding: 14px 10px; background: #4d8dff; color: white; font-weight: 700; cursor: pointer; }
+    button:hover { background: #75a8ff; } #status { min-height: 1.5em; font-weight: 700; color: #8ee6b0; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>VibeCode IoT Event Box</h1>
+    <p>Choose an event from a phone or the presentation laptop. The virtual ESP reacts.</p>
+    <section class="box">
+      <h2 id="event">Waiting for an event</h2>
+      <div class="outputs">
+        <div id="light" class="output"><span class="icon">💡</span>Light</div>
+        <div id="buzzer" class="output"><span class="icon">🔊</span>Buzzer</div>
+        <div id="servo" class="output"><span class="icon">🚩</span>Servo flag</div>
+      </div>
+      <p id="status">Ready</p>
+      <div class="controls">
+        <button data-event="rain">🌧️ Rain expected</button>
+        <button data-event="goal">⚽ Football goal</button>
+        <button data-event="plant">🌱 Plant is dry</button>
+        <button data-event="clear">Reset outputs</button>
+      </div>
+    </section>
+  </main>
+  <script>
+    const labels = {
+      rain: ['Rain expected', 'Blue light and umbrella flag activated'],
+      goal: ['Football goal', 'Flashing light, buzzer, and flag activated'],
+      plant: ['Plant is dry', 'Warning light and buzzer activated'],
+      clear: ['Waiting for an event', 'Ready']
+    };
+    const outputs = ['light', 'buzzer', 'servo'];
+    function trigger(kind) {
+      outputs.forEach(id => document.getElementById(id).classList.remove('active'));
+      if (kind !== 'clear') {
+        document.getElementById('light').classList.add('active');
+        if (kind !== 'plant') document.getElementById('buzzer').classList.add('active');
+        if (kind === 'rain' || kind === 'goal') document.getElementById('servo').classList.add('active');
+      }
+      document.getElementById('event').textContent = labels[kind][0];
+      document.getElementById('status').textContent = labels[kind][1];
+    }
+    document.querySelectorAll('button').forEach(button =>
+      button.addEventListener('click', () => trigger(button.dataset.event)));
+  </script>
+</body>
+</html>

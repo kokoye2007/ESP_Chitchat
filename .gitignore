@@ -1,0 +1,9 @@
+# Local agent/context files — intentionally not part of the GitHub repository.
+AGENTS.md
+PROJECT_DATA.md
+
+# Generated/local files
+.DS_Store
+*.log
+node_modules/
+__pycache__/
